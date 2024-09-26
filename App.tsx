@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppContainer } from './AppStyle';
 import { Login } from './src/components/Login';
+import { FormCadastro } from './src/screens/FormCadastro';
 
 
 export default function App() {
@@ -16,8 +17,9 @@ export default function App() {
   return (
     <ThemeProvider theme={globalTheme}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName='FormCadastro' screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="FormCadastro" component={FormCadastro} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
