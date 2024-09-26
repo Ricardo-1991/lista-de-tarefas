@@ -25,7 +25,35 @@ export const TextTitle = styled.Text`
     font-size: 24px;
     color: ${({theme}) => theme.colors.appBackGround};
     justify-content: center;
-    margin-top: 24px;
+    margin-top: 28px;
     text-align: center;
+
+`;
+
+
+export const TextTitleField = styled.Text`
+
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-size: 20px;
+    margin-left: 12px;
+
+`;
+
+export const Fields = styled.View`
+
+    margin-top: 24px;
+    margin-left: 12px;
+
+`;
+
+export const Input = styled.TextInput`
+
+    margin-left: 12px;
+    margin-top: 10px;
+    width: 204px;
+    height: 66px;
+    background-color: #D9D9D9;
+    border-radius: 8px;
 
 `;
