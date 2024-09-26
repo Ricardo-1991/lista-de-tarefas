@@ -4,8 +4,8 @@ import { ThemeProvider } from 'styled-components/native';
 import { globalTheme } from './globalTheme';
 
 import { AppContainer } from './AppStyle';
+import { Login } from './src/components/Login';
 
-import { Login } from './components/Login';
 
 export default function App() {
   return (
