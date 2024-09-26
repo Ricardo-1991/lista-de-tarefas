@@ -5,6 +5,7 @@ export const LoginContainer = styled.View`
     align-items: center;
     justify-content: center;
     gap: 75px;
+    background-color: ${props => props.theme.colors.appBackGround};
 `;
 
 export const Title = styled.Text`
