@@ -8,25 +8,28 @@ export const Container = styled.View`
 `;
 
 
-export const HeaderStyle = styled.View`
+export const Header = styled.View`
     
     background-color: #FFFFFF;
     width: 100%;
     height: 141px;
     justify-content: center;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
+    
 
 `;
 
 export const TextTitle = styled.Text`
 
-    font-family: 'Roboto-Bold';
+    font-family: 'Roboto-Bold'; 
     font-size: 24px;
     color: ${({theme}) => theme.colors.appBackGround};
     justify-content: center;
-    margin-top: 28px;
+    flex: 1;
     text-align: center;
+    margin-right: 48px;
+    margin-top: 80px;
 
 `;
 
@@ -34,7 +37,7 @@ export const TextTitle = styled.Text`
 export const TextTitleField = styled.Text`
 
     color: #FFFFFF;
-    font-family: 'Roboto';
+    font-family: 'Roboto-Regular'; 
     font-size: 20px;
     margin-left: 12px;
 
