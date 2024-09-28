@@ -27,7 +27,7 @@ export default function App() {
   return (
     <ThemeProvider theme={globalTheme}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='FormCadastro' screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="FormCadastro" component={FormCadastro} />
         </Stack.Navigator>

@@ -24,7 +24,7 @@ export const TextTitle = styled.Text`
 
     font-family: 'Roboto-Bold'; 
     font-size: 24px;
-    color: ${({theme}) => theme.colors.appBackGround};
+    color: ${({theme}) => theme.colors.secondaryButton};
     justify-content: center;
     flex: 1;
     text-align: center;
