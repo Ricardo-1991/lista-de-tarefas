@@ -6,10 +6,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AppContainer } from './AppStyle';
-import { Login } from './src/components/Login';
-import { FormCadastro } from './src/screens/FormCadastro';
+import { Login } from './src/screens/Login';
+import { FormRegisterTask } from './src/screens/FormRegisterTask';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import { RootNavigator } from './src/screens';
 
 
 export default function App() {
@@ -27,10 +28,7 @@ export default function App() {
   return (
     <ThemeProvider theme={globalTheme}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="FormCadastro" component={FormCadastro} />
-        </Stack.Navigator>
+          <RootNavigator />
       </NavigationContainer>
     </ThemeProvider>
   );

@@ -1,9 +1,12 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { LoginButton, LoginButtonText, LoginContainer, Title } from './style';
+import { NavigationProp } from '../../types/navigation';
 
-
-
-export function Login() {
+type Props = {
+    navigation: NavigationProp<'Auth'>;
+  };
+  
+export function Login({navigation}: Props) {
     return (
         <LoginContainer>
             <View>
@@ -11,8 +14,9 @@ export function Login() {
             </View>
             <Image source={require('../../../assets/loginImage.png')} style={{width: 300, height: 300}} />
             <LoginButton>
-                <LoginButtonText>Entrar</LoginButtonText>
+                <LoginButtonText onPress={() => navigation.navigate("FormRegister")}>Entrar</LoginButtonText>
             </LoginButton>
         </LoginContainer>
     );
 }
+
