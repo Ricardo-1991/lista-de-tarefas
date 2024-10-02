@@ -1,16 +1,13 @@
 import { Header , Container, TextTitle, TextTitleField, Input, Fields } from "./style";
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { NavigationProp } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 import {HeaderApp} from '../../components/Header'
+import { RootNavigationProp } from "../../types/navigation";
 
 
-type Props = {
-    navigation: NavigationProp<'FormRegister'>;
-  };
-  
-
-export function FormRegisterTask({navigation}: Props) {
+export function FormRegisterTask() {
+    const navigation = useNavigation<RootNavigationProp>();
     return (
         <Container>
             <HeaderApp>
