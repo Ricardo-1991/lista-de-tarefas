@@ -12,7 +12,7 @@ export function Home() {
         <Title>Aqui você terá sua lista de tarefas na palma da sua mão!</Title>
       </View>
       <Image source={require('../../../assets/loginImage.png')} style={{ width: 300, height: 300 }} />
-      <LoginButton onPress={() => navigation.navigate('FormRegister')}>
+      <LoginButton onPress={() => navigation.navigate('DetailsTask')}>
         <LoginButtonText>Entrar</LoginButtonText>
       </LoginButton>
     </LoginContainer>
