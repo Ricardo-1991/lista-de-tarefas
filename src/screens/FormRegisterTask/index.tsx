@@ -1,4 +1,4 @@
-import { Header , Container, TextTitle, TextTitleField, Input, Fields } from "./style";
+import { Header , Container, TextTitle, TextTitleField, Input, Fields, ContainerButtom, ButtomRegister, ButtomCancel, TextButtom } from "./style";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 
@@ -29,15 +29,6 @@ export function FormRegisterTask() {
         />
         </Fields>
         <Fields>
-            <TextTitleField>Status</TextTitleField>
-            <Input 
-            placeholder='Digite aqui...'
-            placeholderTextColor="white"
-            keyboardType='default'
-               
-        />
-        </Fields>
-        <Fields>
             <TextTitleField>Descrição</TextTitleField>
             <Input 
             placeholder='Digite aqui...'
@@ -46,6 +37,11 @@ export function FormRegisterTask() {
                
         />
         </Fields>
+
+        <ContainerButtom>
+            <ButtomRegister><TextButtom>Cadastrar</TextButtom></ButtomRegister>
+            <ButtomCancel><TextButtom>Cancelar</TextButtom></ButtomCancel>
+        </ContainerButtom>
 
         </Container>
     );
