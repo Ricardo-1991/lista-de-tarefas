@@ -2,7 +2,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 // Define as rotas e seus parâmetros
 export type RootStackParamList = {
-  Auth: undefined;
+  Home: undefined;
   FormRegister: undefined;
   Tasks: undefined;
 };

@@ -3,7 +3,7 @@ import { LoginButton, LoginButtonText, LoginContainer, Title } from './style';
 import { useNavigation } from '@react-navigation/native'; // Importando o hook de navegação
 import { RootNavigationProp } from '../../types/navigation'; // Importando o tipo
 
-export function Login() {
+export function Home() {
   const navigation = useNavigation<RootNavigationProp>(); // Usando o hook com o tipo
 
   return (
