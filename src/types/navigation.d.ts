@@ -1,10 +1,11 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 
+// Define as rotas e seus parâmetros
 export type RootStackParamList = {
-    Auth: undefined;
-    FormRegister: undefined;
-    // Adicione outras rotas conforme necessário
-  };
+  Auth: undefined;
+  FormRegister: undefined;
+  Tasks: undefined;
+};
 
-  // Exportando o tipo de navigation para uso em qualquer componente
-  export type NavigationProp<RouteName extends keyof RootStackParamList> = StackNavigationProp<RootStackParamList, RouteName>;
+// Exportando o tipo do `useNavigation` já pronto
+export type RootNavigationProp = StackNavigationProp<RootStackParamList>;
