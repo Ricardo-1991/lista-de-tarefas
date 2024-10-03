@@ -53,3 +53,42 @@ export const Input = styled.TextInput`
     border-radius: 8px;
 
 `;
+
+export const ContainerButtom = styled.View`
+
+    width: 100%;
+    height: 96px;
+    padding-left: 20px;
+    padding-top: 30px;
+    flex-direction: row;    
+    margin-top: 140px;
+
+
+`;
+
+export const ButtomRegister = styled.TouchableOpacity`
+
+    width: 162px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: blue;
+
+`;
+
+export const ButtomCancel = styled.TouchableOpacity`
+
+    width: 162px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: gray;
+    margin-left: 32px;
+
+`;
+
+export const TextButtom = styled.Text`
+
+    padding: 7px;
+    color: #FFFFFF;
+    text-align: center;
+
+`;
