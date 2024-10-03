@@ -7,7 +7,8 @@ export function TaskItem() {
     return (
         <View style={{gap: 22}}>
             <Container>
-                <CheckTaskButton>   
+                <CheckTaskButton>  
+                     
                 </CheckTaskButton>
                 <DescriptionTask numberOfLines={1} ellipsizeMode="tail">Criar Layout do App no Figma</DescriptionTask>
                 <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>

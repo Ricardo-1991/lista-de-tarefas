@@ -26,7 +26,7 @@ export const CheckTaskButton = styled.TouchableOpacity<CheckTaskButtonProps>`
     justify-content: center;
     width: 28px;
     height: 28px;
-    background-color: ${({ status }) => status ? '#C4DBCC' : ''};
+    background-color: ${({ status }) => status ? '#C4DBCC' : '#FFFFFF'};
     border-radius: 30px;
 `
 
