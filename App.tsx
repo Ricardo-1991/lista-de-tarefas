@@ -4,7 +4,7 @@ import { globalTheme } from './globalTheme';
 import { NavigationContainer } from '@react-navigation/native';
 import { RootNavigator } from './src/screens';
 import SplashScreenComponent from './src/components/SplashScreenComponent'
-import { useFonts } from 'expo-font';
+import { TaskProvider } from './src/context/TaskContext';
 
 
 export default function App() {
@@ -21,10 +21,12 @@ export default function App() {
   }
   
   return (
-    <ThemeProvider theme={globalTheme}>
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-    </ThemeProvider>
+    <TaskProvider>
+      <ThemeProvider theme={globalTheme}>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+      </ThemeProvider>
+    </TaskProvider>
   );
 }
