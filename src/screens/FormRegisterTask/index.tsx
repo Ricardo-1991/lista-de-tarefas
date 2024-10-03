@@ -1,4 +1,4 @@
-import {  Container, TextTitle, TextTitleField, Input, Fields } from "./style";
+import {  Container, TextTitle, TextTitleField, Input, Fields, ContainerButtom, ButtomRegister, TextButtom, ButtomCancel } from "./style";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
 
