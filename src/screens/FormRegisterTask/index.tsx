@@ -1,6 +1,6 @@
-import { Header , Container, TextTitle, TextTitleField, Input, Fields } from "./style";
+import {  Container, TextTitle, TextTitleField, Input, Fields } from "./style";
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 import {HeaderApp} from '../../components/Header'
 import { RootNavigationProp } from "../../types/navigation";

@@ -1,5 +1,4 @@
 import {ReactNode} from 'react'
-import { View} from 'react-native'
 import { Header } from './style'
 
 interface ChildrenProps {

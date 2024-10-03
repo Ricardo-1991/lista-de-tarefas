@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components/native';
 import { globalTheme } from './globalTheme';
 import { NavigationContainer } from '@react-navigation/native';
@@ -22,9 +22,9 @@ export default function App() {
   
   return (
     <ThemeProvider theme={globalTheme}>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
     </ThemeProvider>
   );
 }
