@@ -62,7 +62,4 @@ export const TaskProvider = ({ children }: ChildrenProps) => {
             {children}
         </TaskContext.Provider>
     )
-
-
-
 }
