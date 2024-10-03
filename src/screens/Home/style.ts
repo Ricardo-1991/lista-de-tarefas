@@ -4,7 +4,7 @@ export const LoginContainer = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: ${({theme}) => theme.colors.appBackGround};
+    background-color: ${props => props.theme.colors.appBackGround};
 `;
 
 export const Title = styled.Text`
