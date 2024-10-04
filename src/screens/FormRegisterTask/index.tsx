@@ -38,6 +38,7 @@ export function FormRegisterTask() {
         description: taskDescription,
         status: false
        }
+       
        setTaskTitle('')
        setTaskDescription('')
        addTask(newTask)

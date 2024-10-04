@@ -35,19 +35,11 @@ export const TaskProvider = ({ children }: ChildrenProps) => {
     }
 
     function deleteTask(id: string){
-        Alert.alert('Deletar Tarefa', 'Tem certeza que deseja deletar esta tarefa?', [
-            {
-                text: 'Cancelar',
-                style: 'cancel'
-            },
-            {   
-                text: 'Deletar',
-                onPress: () => {
-                    setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
-                },
-                style: 'destructive'
-            }
-        ])
+        
+    const updatedTasks = tasks.filter(task => task.id !== id)
+    
+    setTasks(updatedTasks);
+             
     }
 
     return (
