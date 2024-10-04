@@ -17,6 +17,7 @@ interface TaskContextProps {
     tasks: TaskProps[];
     addTask: (task: TaskProps) => void;
     deleteTask: (id: string) => void;
+    checkAndUncheckTask: (id: string) => void;
     // updateTaskStatus: (id: string) => void;
   }
 
@@ -35,15 +36,17 @@ export const TaskProvider = ({ children }: ChildrenProps) => {
     }
 
     function deleteTask(id: string){
-        
-    const updatedTasks = tasks.filter(task => task.id !== id)
-    
-    setTasks(updatedTasks);
-             
+        const updatedTasks = tasks.filter(task => task.id !== id)
+        setTasks(updatedTasks);   
+    }
+
+    function checkAndUncheckTask(id: string){
+        const updatedTask = tasks.map(task => task.id === id ? {...task, status: !task.status} : task)
+        setTasks(updatedTask)
     }
 
     return (
-        <TaskContext.Provider value={{tasks, addTask, deleteTask}}>
+        <TaskContext.Provider value={{tasks, addTask, deleteTask, checkAndUncheckTask}}>
             {children}
         </TaskContext.Provider>
     )
