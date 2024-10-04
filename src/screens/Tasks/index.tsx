@@ -1,16 +1,18 @@
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RootNavigationProp } from '../../types/navigation';
-
 
 import { HeaderApp } from '../../components/Header';
 import { Container, HeaderTask, InputContainer, Main, TextTitle } from './style';
 import { Input } from './style';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { TaskItem } from './Components/TaskItem';
-
+import { TaskContext } from '../../context/TaskContext';
+import { useContext } from 'react';
 
 export function Tasks () {
+    const {tasks} = useContext(TaskContext);
+
     const navigation = useNavigation<RootNavigationProp>();
     return (
         <Container>
@@ -27,7 +29,11 @@ export function Tasks () {
                 </HeaderTask>
             </HeaderApp>
             <Main>
-                <TaskItem />
+                <FlatList 
+                data={tasks}
+                keyExtractor={item => item.id}
+                renderItem={({item}) => <TaskItem task={item} />}
+                />
             </Main>
         </Container>
     )
