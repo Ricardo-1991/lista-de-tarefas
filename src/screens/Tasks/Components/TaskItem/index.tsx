@@ -1,6 +1,9 @@
 import {Alert, View } from "react-native";
-import { CheckTaskButton, Container, ContainerTaskItem, DescriptionTask } from "./style";
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native'; // Importando o hook de navegação
+import { RootNavigationProp } from '../../../../types/navigation'
+
+import { CheckTaskButton, Container, ContainerTaskItem, DescriptionTask } from "./style";
 import { useContext } from "react";
 import { TaskContext } from "../../../../context/TaskContext";
 
@@ -14,7 +17,7 @@ interface TaskProps {
 }
 
 export function TaskItem(item: TaskProps) {
- 
+    const navigation = useNavigation<RootNavigationProp>()
     const {deleteTask} = useContext(TaskContext)
 
     function handleDeleteTask() {
@@ -35,6 +38,12 @@ export function TaskItem(item: TaskProps) {
         );
     }
 
+    function handleDetailTask() {
+        navigation.navigate('DetailsTask', {
+            task: item.task
+        })
+    }
+
     return (
         <Container>
             <ContainerTaskItem status={item.task.status? 'completed' : 'incomplete'}>
@@ -45,7 +54,7 @@ export function TaskItem(item: TaskProps) {
                 </CheckTaskButton>
                 <DescriptionTask status={item.task.status? 'completed' : 'incomplete'} numberOfLines={1} ellipsizeMode="tail">{item.task.title}</DescriptionTask>
                 <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
-                    <AntDesign name="edit" size={28} color="#FFFFFF" />
+                    <AntDesign name="edit" onPress={handleDetailTask} size={28} color="#FFFFFF" />
                     <AntDesign name="close" onPress={handleDeleteTask} size={28} color="#FFFFFF" />
                 </View>
             </ContainerTaskItem>
