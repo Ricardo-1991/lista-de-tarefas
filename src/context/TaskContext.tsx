@@ -26,9 +26,9 @@ export const TaskProvider = ({ children }: ChildrenProps) => {
     const [tasks, setTasks] = useState<TaskProps[]>([])
 
     function addTask(task: TaskProps){
-        const taskExists = tasks.some(existingTask => existingTask.id === task.id)
+        const taskExists = tasks.some(existingTask => existingTask.title === task.title)
         if(taskExists){
-            return Alert.alert("Essa tarefa já foi cadastrada!")   
+            return Alert.alert("Essa tarefa já foi cadastrada! Cadastre uma tarefa diferente.")   
         }
         Alert.alert("Tarefa cadastrada com sucesso!")
         setTasks(prevTasks => [...prevTasks, task])

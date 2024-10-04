@@ -5,7 +5,7 @@ export type RootStackParamList = {
   Home: undefined;
   FormRegister: undefined;
   Tasks: undefined;
-  DetailsTask: undefined;
+  DetailsTask: {task: TaskProps['task']};
 };
 
 // Exportando o tipo do `useNavigation` já pronto

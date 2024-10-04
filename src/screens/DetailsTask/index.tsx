@@ -1,14 +1,27 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { NavigationProp, useNavigation } from "@react-navigation/native";
-import { Container, ContainerTasks, TextSubTitle, TextTask, TextTitle } from './style';
+import { useNavigation } from "@react-navigation/native";
+import { useRoute } from '@react-navigation/native';
 
+import { Container, ContainerTasks, TextSubTitle, TextTask, TextTitle } from './style';
 import {HeaderApp} from '../../components/Header'
 import { RootNavigationProp } from "../../types/navigation";
-import { LoginContainer } from '../Home/style';
 
+interface TaskDetailProps {
+    task: {
+      description: string;
+      id: string;
+      status: boolean;
+      title: string;
+    }
+  }
+  
 
 export function DetailsTask(){
     const navigation = useNavigation<RootNavigationProp>();
+    const route = useRoute();
+
+    const {task} = route.params as TaskDetailProps;
+
     return (
         <Container>
             <HeaderApp>
@@ -20,23 +33,20 @@ export function DetailsTask(){
                 />
                 <TextTitle>DETALHES</TextTitle>
             </HeaderApp>
-
                 <ContainerTasks>
-                <TextTask>Tarefa</TextTask>
-                <TextSubTitle>Estudar React</TextSubTitle>
+                <TextTask>Título</TextTask>
+                <TextSubTitle>{task.title}</TextSubTitle>
                 </ContainerTasks>
 
                 <ContainerTasks>
                 <TextTask>Status</TextTask>
-                <TextSubTitle>Concluido</TextSubTitle>
+                <TextSubTitle>{task.status ? 'Concluído' : 'Pendente'}</TextSubTitle>
                 </ContainerTasks>
 
                 <ContainerTasks>
                 <TextTask>Descrição</TextTask>
-                <TextSubTitle>Como instalar o ambiente</TextSubTitle>
+                <TextSubTitle>{task.description}</TextSubTitle>
                 </ContainerTasks>
-            
-
         </Container>
     )
 }
