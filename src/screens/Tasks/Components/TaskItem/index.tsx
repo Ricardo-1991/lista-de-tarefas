@@ -1,32 +1,34 @@
 import {View } from "react-native";
-import { CheckTaskButton, Container, DescriptionTask } from "./style";
+import { CheckTaskButton, Container, ContainerTaskItem, DescriptionTask } from "./style";
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useContext } from "react";
+import { TaskContext } from "../../../../context/TaskContext";
 
-export function TaskItem() {
-    const status = true
+interface TaskProps {
+    task: {
+        description: string,
+        id: string,
+        status: boolean,
+        title: string
+    }
+}
+
+export function TaskItem(item: TaskProps) {
+ 
     return (
-        <View style={{gap: 22}}>
-            <Container>
-                <CheckTaskButton>  
-                     
+        <Container>
+            <ContainerTaskItem status={item.task.status? 'completed' : 'incomplete'}>
+                <CheckTaskButton status={item.task.status? 'completed' : 'incomplete'}>
+                    {item.task.status && (
+                     <AntDesign name="check" size={18} color="black" />
+                    )}
                 </CheckTaskButton>
-                <DescriptionTask numberOfLines={1} ellipsizeMode="tail">Criar Layout do App no Figma</DescriptionTask>
+                <DescriptionTask status={item.task.status? 'completed' : 'incomplete'} numberOfLines={1} ellipsizeMode="tail">{item.task.description}</DescriptionTask>
                 <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
                     <AntDesign name="edit" size={28} color="#FFFFFF" />
                     <AntDesign name="close" size={28} color="#FFFFFF" />
                 </View>
-            </Container>
-
-            <Container status={status? 'completed' : 'incomplete'}>
-                <CheckTaskButton status={status? 'completed' : 'incomplete'}>
-                    <AntDesign name="check" size={18} color="black" />
-                </CheckTaskButton>
-                <DescriptionTask status={status? 'completed' : 'incomplete'} numberOfLines={1} ellipsizeMode="tail">Criar Layout do App no Figma</DescriptionTask>
-                <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
-                    <AntDesign name="edit" size={28} color="#FFFFFF" />
-                    <AntDesign name="close" size={28} color="#FFFFFF" />
-                </View>
-            </Container>
-        </View>
+            </ContainerTaskItem>
+        </Container>
     )
 }
