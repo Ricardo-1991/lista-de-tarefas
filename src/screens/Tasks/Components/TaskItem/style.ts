@@ -34,12 +34,13 @@ export const CheckTaskButton = styled.TouchableOpacity<CheckTaskButtonProps>`
     border-radius: 30px;
 `
 
-export const DescriptionTask = styled.Text<CheckTaskButtonProps>`
+export const TitleTask = styled.Text<CheckTaskButtonProps>`
     font-size: 20px;
     flex: 1;
     margin-left: 10px; 
     margin-right: 10px;
     color: ${({ status }) => status === 'completed' ? '#FFFFFF' : '#000000'};
+    text-decoration-line: ${({ status }) => status === 'completed' ? 'line-through' : 'none'};
 `
 
 
