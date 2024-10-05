@@ -39,7 +39,7 @@ export function TaskItem(item: TaskProps) {
     }
 
     function handleDetailTask() {
-        navigation.navigate('DetailsTask', {
+        navigation.navigate('DetailsTaskScreen', {
             currentTaskId: item.task.id
         })
     }

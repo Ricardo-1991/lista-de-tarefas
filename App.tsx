@@ -5,18 +5,24 @@ import { NavigationContainer } from '@react-navigation/native';
 import { RootNavigator } from './src/screens';
 import SplashScreenComponent from './src/components/SplashScreenComponent'
 import { TaskProvider } from './src/context/TaskContext';
+import { useFonts } from 'expo-font';
 
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
+    'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
+  });
+
   const [isReady, setIsReady] = useState(false);
 
-  // Função chamada para mudar para a tela inicial
+
   const handleSplashFinish = () => {
     setIsReady(true);
   };
 
-  // Mostra a tela de splash enquanto o app não estiver pronto
-  if (!isReady) {
+
+  if (!isReady || !fontsLoaded) {
     return <SplashScreenComponent onFinish={handleSplashFinish} />;
   }
   

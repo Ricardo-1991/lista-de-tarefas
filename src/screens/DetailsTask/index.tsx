@@ -1,8 +1,11 @@
-import { useContext, useState } from 'react';
-import {Alert, Modal} from 'react-native';
+import { Fragment, useContext, useState } from 'react';
+import { Alert, Modal, View, Text } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from '@react-navigation/native';
 import AntDesign from '@expo/vector-icons/AntDesign';
+
+import { Formik } from 'formik';
+import * as Yup from 'yup'; 
 
 import {
     Container, 
@@ -24,6 +27,11 @@ import { RootNavigationProp } from "../../types/navigation";
 import { CustomButton } from '../../components/Button';
 import { TaskContext } from '../../context/TaskContext';
 
+const TaskSchema = Yup.object().shape({
+    title: Yup.string().required('O campo título é obrigatório'),
+    description: Yup.string().required('O campo descrição é obrigatório'),
+})
+
 export function DetailsTask(){
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -36,18 +44,7 @@ export function DetailsTask(){
 
     const currentTask = tasks.find(task => task.id === currentTaskId);
 
-    const [taskTitle, setTaskTitle] = useState(currentTask?.title || '');
-    const [taskDescription, setTaskDescription] = useState(currentTask?.description || '');
-    
-    function handleTaskTitle(title: string) {
-        setTaskTitle(title)
-    }
-
-    function handleTaskDescription(description: string) {
-        setTaskDescription(description)
-    }
-
-    function handleEditTask() {
+    function handleEditTask(values: { title?: string, description?: string }) {
         Alert.alert(
             'Atualizar Tarefa',
             'Tem certeza que deseja atualizar esta tarefa?',
@@ -60,7 +57,7 @@ export function DetailsTask(){
                     text: 'Sim',
                     style: 'destructive',
                     onPress: () => {
-                        updatedTask(taskTitle, taskDescription, currentTask?.id || '');
+                        updatedTask(values.title || '', values.description || '', currentTask?.id || '');
                         setModalVisible(false);
                     }
                 },
@@ -69,7 +66,7 @@ export function DetailsTask(){
     }
 
     return (
-        <Container>
+    <Container>
             <HeaderApp>
                 <AntDesign name="back" size={50} color="black" style={{
                     marginTop: 80,
@@ -99,42 +96,62 @@ export function DetailsTask(){
                     <CustomButton title="Fechar" backgroundColor='gray' onPress={() => navigation.goBack()}></CustomButton>
                 </ContainerButtom>
 
-                <Modal 
+        <Modal 
                     animationType="slide"
                     transparent={true}
                     visible={modalVisible}
                     onRequestClose={() => setModalVisible(false)}
             >
-                <ModalBackground>
-                    <ModalContainer>
-                        <ModalButton  onPress={() => setModalVisible(false)} >
-                             <AntDesign name="close" size={16} color="black" />
+            <ModalBackground>
+                <ModalContainer>
+                        <ModalButton onPress={() => setModalVisible(false)}>
+                            <AntDesign name="close" size={16} color="black" />
                         </ModalButton>
                         <TextTitleField>EDITAR TAREFA</TextTitleField>
-                        <Fields>
-                            <TextTitleField>Título</TextTitleField>
-                                <Input 
-                                    placeholder='Digite aqui...'
-                                    placeholderTextColor="white"
-                                    keyboardType='default'
-                                    onChangeText={handleTaskTitle}
-                                    value={taskTitle}
-                                />
-                        </Fields>
-                        <Fields>
-                        <TextTitleField>Descrição</TextTitleField>
-                            <Input 
-                            placeholder='Digite aqui...'
-                            placeholderTextColor="white"
-                            keyboardType='default'
-                            onChangeText={handleTaskDescription}
-                            value={taskDescription}
-                            />
-                        </Fields>
-                        <CustomButton title="Confirmar" backgroundColor='blue' onPress={handleEditTask}></CustomButton>
-                    </ModalContainer>
-                </ModalBackground>
-            </Modal>
-        </Container>
+                        <Formik
+                            initialValues={{ title: currentTask?.title, description: currentTask?.title }}
+                            validationSchema={TaskSchema}
+                            onSubmit={(values) => handleEditTask(values)} // Passa os valores editados
+                        >
+                            {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+                                <Fragment>
+                                    <Fields>
+                                        <TextTitleField>Título</TextTitleField>
+                                        <Input
+                                            placeholder='Digite aqui...'
+                                            placeholderTextColor="white"
+                                            keyboardType='default'
+                                            onChangeText={handleChange('title')}
+                                            onBlur={handleBlur('title')}
+                                            value={values.title} 
+                                        />
+                                        {touched.title && errors.title && (
+                                            <Text style={{ color: '#FF6666', marginTop: 5  }}>{errors.title}</Text>
+                                        )}
+                                    </Fields>
+
+                                    <Fields>
+                                        <TextTitleField>Descrição</TextTitleField>
+                                        <Input
+                                            placeholder='Digite aqui...'
+                                            placeholderTextColor="white"
+                                            keyboardType='default'
+                                            onChangeText={handleChange('description')}
+                                            onBlur={handleBlur('description')} 
+                                            value={values.description} 
+                                        />
+                                        {touched.description && errors.description && (
+                                            <Text style={{ color: '#FF6666', marginTop: 5 }}>{errors.description}</Text>
+                                        )}
+                                    </Fields>
+
+                                    <CustomButton title="Confirmar" backgroundColor='blue' onPress={() => handleSubmit()} />
+                                </Fragment>
+                            )}
+                    </Formik>
+                </ModalContainer>
+            </ModalBackground>
+        </Modal>
+    </Container>
     )
 }
