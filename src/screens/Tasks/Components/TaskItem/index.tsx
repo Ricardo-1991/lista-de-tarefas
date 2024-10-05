@@ -1,10 +1,10 @@
+import { useContext } from "react";
 import {Alert, View } from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native'; // Importando o hook de navegação
 import { RootNavigationProp } from '../../../../types/navigation'
 
 import { CheckTaskButton, Container, ContainerTaskItem, TitleTask } from "./style";
-import { useContext } from "react";
 import { TaskContext } from "../../../../context/TaskContext";
 
 interface TaskProps {
@@ -40,7 +40,7 @@ export function TaskItem(item: TaskProps) {
 
     function handleDetailTask() {
         navigation.navigate('DetailsTask', {
-            task: item.task
+            currentTaskId: item.task.id
         })
     }
 

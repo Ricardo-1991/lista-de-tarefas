@@ -18,7 +18,7 @@ interface TaskContextProps {
     addTask: (task: TaskProps) => void;
     deleteTask: (id: string) => void;
     checkAndUncheckTask: (id: string) => void;
-    // updateTaskStatus: (id: string) => void;
+    updatedTask: (title: string, description: string, taskId: string) => void;
   }
 
 export const TaskContext = createContext<TaskContextProps>({} as TaskContextProps);
@@ -45,8 +45,13 @@ export const TaskProvider = ({ children }: ChildrenProps) => {
         setTasks(updatedTask)
     }
 
+    function updatedTask(taskTitle: string, taskDescription: string, taskId: string){
+        const updatedTask = tasks.map(task => task.id === taskId ? {...task, title: taskTitle, description: taskDescription} : task)
+        setTasks(updatedTask)
+    }
+
     return (
-        <TaskContext.Provider value={{tasks, addTask, deleteTask, checkAndUncheckTask}}>
+        <TaskContext.Provider value={{tasks, addTask, deleteTask, checkAndUncheckTask, updatedTask}}>
             {children}
         </TaskContext.Provider>
     )

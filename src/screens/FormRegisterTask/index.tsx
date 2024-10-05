@@ -9,6 +9,7 @@ import {HeaderApp} from '../../components/Header'
 import { RootNavigationProp } from "../../types/navigation";
 import { TaskContext } from "../../context/TaskContext";
 import { Alert } from "react-native";
+import { CustomButton } from "../../components/Button";
 
 
 export function FormRegisterTask() {
@@ -78,8 +79,8 @@ export function FormRegisterTask() {
         </Fields>
 
         <ContainerButtom>
-            <ButtomRegister onPress={handleAddTask}><TextButtom>Cadastrar</TextButtom></ButtomRegister>
-            <ButtomCancel onPress={() => navigation.goBack()}><TextButtom>Cancelar</TextButtom></ButtomCancel>
+            <CustomButton title="Cadastrar" backgroundColor="blue" onPress={handleAddTask}></CustomButton>
+            <CustomButton title="Cancelar" backgroundColor="gray" onPress={() => navigation.goBack()}></CustomButton>
         </ContainerButtom>
 
         </Container>
