@@ -47,6 +47,8 @@ export const Input = styled.TextInput`
     height: 66px;
     background-color: #D9D9D9;
     border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
 `;
 
 export const ContainerButtom = styled.View`
