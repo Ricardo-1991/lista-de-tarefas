@@ -34,7 +34,7 @@ export function Tasks() {
                 onChangeText={text => setSearchText(text)}
               />
             </View>
-            <AntDesign onPress={() => navigation.navigate('FormRegister')} name="pluscircle" size={50} color='#00B37E' />
+            <AntDesign onPress={() => navigation.navigate('FormRegisterScreen')} name="pluscircle" size={50} color='#00B37E' />
           </InputContainer>
         </HeaderTask>
       </HeaderApp>
