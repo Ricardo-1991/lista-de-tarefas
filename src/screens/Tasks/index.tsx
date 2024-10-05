@@ -43,6 +43,7 @@ export function Tasks() {
           data={filteredTasks} 
           keyExtractor={item => item.id}
           renderItem={({ item }) => <TaskItem task={item} />}
+          ListEmptyComponent={() => <Text style={{ textAlign: 'center', marginTop: 20, color: '#FFFFFF'}}>Nenhuma tarefa cadastrada</Text>}
         />
       </Main>
     </Container>
