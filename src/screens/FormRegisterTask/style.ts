@@ -28,7 +28,6 @@ export const TextTitle = styled.Text`
 
 
 export const TextTitleField = styled.Text`
-
     color: #FFFFFF;
     font-family: 'Roboto-Regular'; 
     font-size: 20px;
@@ -37,42 +36,35 @@ export const TextTitleField = styled.Text`
 `;
 
 export const Fields = styled.View`
-
     margin-top: 24px;
     margin-left: 12px;
-
 `;
 
 export const Input = styled.TextInput`
-
     margin-left: 12px;
     margin-top: 10px;
     width: 204px;
     height: 66px;
     background-color: #D9D9D9;
     border-radius: 8px;
-
 `;
 
 export const ContainerButtom = styled.View`
-
     width: 100%;
-    height: 96px;
-    padding-left: 20px;
-    padding-top: 30px;
+    padding: 10px;
+    padding-bottom: 30px;
     flex-direction: row;    
     margin-top: 140px;
-
-
+    justify-content: space-between;
+    align-items: flex-end;
+    flex: 1;
 `;
 
 export const ButtomRegister = styled.TouchableOpacity`
-
     width: 162px;
     height: 36px;
     border-radius: 8px;
     background-color: blue;
-
 `;
 
 export const ButtomCancel = styled.TouchableOpacity`
