@@ -23,9 +23,6 @@ export function FormRegisterTask() {
 
     const {addTask} = useContext(TaskContext)
     function handleAddTask (values: { title: string, description: string }) {
-       if(values.title.length == 0 || values.description.length == 0) {
-        return Alert.alert('Atenção', 'Preencha todos os campos')  
-       }
        const uuId = uuidv4()
 
        const newTask = {
@@ -53,7 +50,7 @@ export function FormRegisterTask() {
             <TextTitle>CADASTRAR</TextTitle>
             </HeaderApp>
             <Formik initialValues={{title: '', description: ''}} validationSchema={TaskSchema} onSubmit={handleAddTask}>
-            {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+            {({ handleChange, handleBlur, handleSubmit,isSubmitting, values, errors, touched }) => (
                 <Fragment>
                     <Fields>
                             <TextTitleField>Título</TextTitleField>
@@ -65,9 +62,9 @@ export function FormRegisterTask() {
                             onBlur={handleBlur('title')}
                             value={values.title}
                         />
-                        {touched.title && errors.title && (
-                            <Text style={{ color: '#FF6666', marginTop: 5, marginLeft: 12  }}>{errors.title}</Text>
-                        )}
+                         {(errors.title && touched.title) || (isSubmitting && errors.title) ? (
+                                <Text style={{ color: '#FF6666', marginTop: 5, marginLeft: 12 }}>{errors.title}</Text>
+                         ) : null}
                     </Fields>
                     <Fields>
                         <TextTitleField>Descrição</TextTitleField>
@@ -79,9 +76,9 @@ export function FormRegisterTask() {
                         onBlur={handleBlur('description')}
                         value={values.description}
                     />
-                        {touched.title && errors.title && (
-                            <Text style={{ color: '#FF6666', marginTop: 5, marginLeft: 12   }}>{errors.title}</Text>
-                        )}
+                        {(errors.description && touched.description) || (isSubmitting && errors.description) ? (
+                                <Text style={{ color: '#FF6666', marginTop: 5, marginLeft: 12 }}>{errors.description}</Text>
+                        ) : null}
                     </Fields>
                     <ContainerButtom>
                         <CustomButton title="Cadastrar" backgroundColor="blue" onPress={() => handleSubmit()}></CustomButton>

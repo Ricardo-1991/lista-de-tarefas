@@ -97,11 +97,11 @@ export function DetailsTask(){
                 </ContainerButtom>
 
         <Modal 
-                    animationType="slide"
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => setModalVisible(false)}
-            >
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => setModalVisible(false)}
+        >
             <ModalBackground>
                 <ModalContainer>
                         <ModalButton onPress={() => setModalVisible(false)}>
@@ -113,7 +113,7 @@ export function DetailsTask(){
                             validationSchema={TaskSchema}
                             onSubmit={(values) => handleEditTask(values)} // Passa os valores editados
                         >
-                            {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+                            {({ handleChange, handleBlur, handleSubmit, isSubmitting, values, errors, touched }) => (
                                 <Fragment>
                                     <Fields>
                                         <TextTitleField>Título</TextTitleField>
@@ -125,9 +125,9 @@ export function DetailsTask(){
                                             onBlur={handleBlur('title')}
                                             value={values.title} 
                                         />
-                                        {touched.title && errors.title && (
-                                            <Text style={{ color: '#FF6666', marginTop: 5  }}>{errors.title}</Text>
-                                        )}
+                                         {(errors.title && touched.title) || (isSubmitting && errors.title) ? (
+                                            <Text style={{ color: '#FF6666', marginTop: 5, marginLeft: 12 }}>{errors.title}</Text>
+                                         ) : null}
                                     </Fields>
 
                                     <Fields>
@@ -140,9 +140,9 @@ export function DetailsTask(){
                                             onBlur={handleBlur('description')} 
                                             value={values.description} 
                                         />
-                                        {touched.description && errors.description && (
-                                            <Text style={{ color: '#FF6666', marginTop: 5 }}>{errors.description}</Text>
-                                        )}
+                                        {(errors.description && touched.description) || (isSubmitting && errors.description) ? (
+                                            <Text style={{ color: '#FF6666', marginTop: 5, marginLeft: 12 }}>{errors.description}</Text>
+                                         ) : null}
                                     </Fields>
 
                                     <CustomButton title="Confirmar" backgroundColor='blue' onPress={() => handleSubmit()} />
