@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components/native';
 import { globalTheme } from './globalTheme';
 import { NavigationContainer } from '@react-navigation/native';
@@ -28,6 +29,7 @@ export default function App() {
   
   return (
     <TaskProvider>
+      <StatusBar />
       <ThemeProvider theme={globalTheme}>
           <NavigationContainer>
             <RootNavigator />
