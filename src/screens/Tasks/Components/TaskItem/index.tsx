@@ -9,10 +9,10 @@ import { TaskContext } from "../../../../context/TaskContext";
 
 interface TaskProps {
     task: {
-        description: string,
         id: string,
-        status: boolean,
         title: string
+        description: string,
+        status: boolean,
     }
 }
 

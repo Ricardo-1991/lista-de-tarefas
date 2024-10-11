@@ -3,7 +3,6 @@ import {  Container, TextTitle, TextTitleField, Input, Fields, ContainerButtom, 
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
 import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
 import { Formik } from 'formik';
 import * as Yup from 'yup'; 
 
@@ -11,7 +10,7 @@ import * as Yup from 'yup';
 import {HeaderApp} from '../../components/Header'
 import { RootNavigationProp } from "../../types/navigation";
 import { TaskContext } from "../../context/TaskContext";
-import { Alert, Text } from 'react-native';
+import { Text } from 'react-native';
 import { CustomButton } from "../../components/Button";
 
 const TaskSchema = Yup.object().shape({
@@ -19,14 +18,17 @@ const TaskSchema = Yup.object().shape({
     description: Yup.string().required('O campo descrição é obrigatório'),
 })
 
+interface NewTaskProps {
+    title: string;
+    description: string;
+    status: boolean;
+}
+
 export function FormRegisterTask() {
 
     const {addTask} = useContext(TaskContext)
     function handleAddTask (values: { title: string, description: string }) {
-       const uuId = uuidv4()
-
-       const newTask = {
-        id: uuId,
+       const newTask: NewTaskProps = {
         title: values.title,
         description: values.description,
         status: false

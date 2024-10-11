@@ -8,17 +8,16 @@ import { Input } from './style';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { TaskItem } from './Components/TaskItem';
 import { TaskContext } from '../../context/TaskContext';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export function Tasks() {
   const { tasks } = useContext(TaskContext);
   const [searchText, setSearchText] = useState(''); 
   const navigation = useNavigation<RootNavigationProp>();
-
   
-  const filteredTasks = tasks.filter(task => 
-    task.title.toLowerCase().includes(searchText.toLowerCase())
-  );
+  // const filteredTasks = tasks.filter(task => 
+  //   task.title.toLowerCase().includes(searchText.toLowerCase())
+  // );
 
   return (
     <Container>
@@ -40,7 +39,7 @@ export function Tasks() {
       </HeaderApp>
       <Main>
         <FlatList 
-          data={filteredTasks} 
+          data={tasks} 
           keyExtractor={item => item.id}
           renderItem={({ item }) => <TaskItem task={item} />}
           ListEmptyComponent={() => <Text style={{ textAlign: 'center', marginTop: 20, color: '#FFFFFF'}}>Nenhuma tarefa cadastrada</Text>}

@@ -109,7 +109,7 @@ export function DetailsTask(){
                         </ModalButton>
                         <TextTitleField>EDITAR TAREFA</TextTitleField>
                         <Formik
-                            initialValues={{ title: currentTask?.title, description: currentTask?.title }}
+                            initialValues={{ title: currentTask?.title, description: currentTask?.description }}
                             validationSchema={TaskSchema}
                             onSubmit={(values) => handleEditTask(values)} // Passa os valores editados
                         >
